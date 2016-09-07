@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<package>
+  <metadata>
+    <id>SecurityHeaders</id>
+    <title>Security Headers</title>
+    <version>0.0.0</version>
+    <authors>Rasmus Lauridsen</authors>
+    <licenseUrl>https://raw.githubusercontent.com/estei/security-headers-site-extension/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/estei/security-headers-site-extension</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>
+        Easily add security headers to your web app.
+    </description>
+    <releaseNotes>
+    </releaseNotes>
+    <copyright>Copyright 2016 Rasmus Lauridsen</copyright>
+    <tags>azure security headers</tags>
+  </metadata>
+  <files>
+    <file src="build\**\*.*" target="content" />
+  </files>
+</package>
