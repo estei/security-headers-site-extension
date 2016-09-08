@@ -1,10 +1,15 @@
 SET version=%1
-set artifactsdir=artifacts
+SET artifactsdir=artifacts
+SET curpath=%~dp0
+
 IF NOT EXIST "%artifactsDir%" (
-    mkdir "%artifactsDir%"
+    MKDIR "%artifactsDir%"
 )
-set builddir=build
-IF NOT EXIST "%builddir%" (
-    mkdir "%builddir%"
+SET builddir=build
+IF EXIST "%builddir%" (
+    RMDIR "%builddir%" /s /q    
 )
-nuget pack SecurityHeaders.nuspec -Version %version% -OutputDirectory "%artifactsDir%"
+MKDIR "%builddir%"
+dotnet.exe publish "src\SecurityHeaders" --framework net461 --output "%curpath%%builddir%" --configuration Release
+
+nuget pack SecurityHeaders.nuspec -Version %version% -OutputDirectory "%artifactsDir%" -NoPackageAnalysis -Verbosity quiet
