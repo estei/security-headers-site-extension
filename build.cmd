@@ -12,4 +12,4 @@ IF EXIST "%builddir%" (
 MKDIR "%builddir%"
 dotnet.exe publish "src\SecurityHeaders" --framework net461 --output "%curpath%%builddir%" --configuration Release
 
-nuget pack SecurityHeaders.nuspec -Version %version% -OutputDirectory "%artifactsDir%" -NoPackageAnalysis -Verbosity quiet
+tools\nuget.exe pack SecurityHeaders.nuspec -Version %version% -OutputDirectory "%artifactsDir%" -NoPackageAnalysis -Verbosity quiet
