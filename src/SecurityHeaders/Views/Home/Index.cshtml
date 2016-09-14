@@ -1,54 +1,89 @@
 ﻿@{
     ViewData["Title"] = "Index";
 }
-<h1>Security Headers</h1>
-<hr />
-<div class="row">
-    <form>
-        <div class="col-md-12">
-            <h3>X-XSS-Protection</h3>
-            <div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <div class="alert alert-info">
-                            <p>Directs supporting browsers to activate their built XSS protection</p>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" checked> Enable
-                            </label>
-                        </div>
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox"> Block
-                            </label>
+<div id="content">
+</div>
+
+@section scripts {
+    <script type="text/babel">
+        var SecurityHeadersConfiguration = React.createClass({
+        render: function() {
+        return (
+        <div className="headersConfiguration">
+            <h1>Security Headers</h1>
+            <hr />
+            <XXssProtectionConfigurator />
+            <hr />
+            <XXssProtectionConfigurator />
+        </div>
+        );
+        }
+        });
+
+        var XXssProtectionConfigurator = React.createClass({
+        render: function() {
+            return (
+            <div className="row">
+                <form>
+                    <div className="col-md-12">
+                        <h3>X-XSS-Protection</h3>
+                        <div>
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <div className="alert alert-info">
+                                        <p>Directs supporting browsers to activate their built XSS protection</p>
+                                    </div>
+                                    <div className="checkbox">
+                                        <label>
+                                            <input type="checkbox"/> Enable
+                                        </label>
+                                    </div>
+                                    <div className="checkbox">
+                                        <label>
+                                            <input type="checkbox" /> Block
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row">
+                                <div className="col-md-9">
+                                    <pre>X-XSS-Protection : 0</pre>
+                                </div>
+                            </div>
+                            <button type="submit" className="btn btn-default">Add</button>
                         </div>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-9">
-                        <pre>X-XSS-Protection : 1</pre>
+                </form>
+            </div>
+            )
+        }
+        });
+
+        var XXssProtectionConfigurator = React.createClass({
+        render: function() {
+            return (
+            <div className="row">
+                <form>
+                    <div className="col-md-12">
+                        <h3>X-Content-Type-Options</h3>
+                        <div className="row">
+                            <div className="col-md-9">
+                                <div className="alert alert-info">
+                                    <p>Directs supporting browsers to not do any sniffing</p>
+                                </div>
+                                <pre>X-Content-Type-Options : nosniff</pre>
+                            </div>
+                        </div>
+                        <button type="submit" className="btn btn-default">Add</button>
                     </div>
-                </div>
-                <button type="submit" class="btn btn-default">Add</button>
+                </form>
             </div>
-        </div>
-    </form>
-</div>
-<hr />
-<div class="row">
-    <form>
-        <div class="col-md-12">
-            <h3>X-Content-Type-Options</h3>
-           <div class="row">
-               <div class="col-md-9">
-                   <div class="alert alert-info">
-                       <p>Directs supporting browsers to not do any sniffing</p>
-                   </div>
-                   <pre>X-Content-Type-Options : nosniff</pre>
-               </div>
-            </div>
-            <button type="submit" class="btn btn-default">Add</button>
-        </div>
-    </form>
-</div>
+            )
+        }
+        });
+        ReactDOM.render(
+            <SecurityHeadersConfiguration />,
+            document.getElementById('content')
+        );
+</script>
+}
